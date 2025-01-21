@@ -13,11 +13,12 @@
 html,
 body {
 	height: 100%;
-	background-color: colors.$backgroundDarkmode;
 }
 
 html {
+	font-family: fonts.$mainText;
 	font-size: 62.5%;
+	background-color: colors.$backgroundDarkmode;
 	scroll-behavior: smooth;
 }
 
@@ -50,17 +51,24 @@ table {
 	border-spacing: 0;
 }
 
+// NAVIGATION BUTTON
+
+// NAVIGATION
 
 // HEADER 
 
 .header {
 	width: 100%;
+	height: 40vh;
 	background-image: url("../img/header/header_mobile.png");
+	background-size: cover;
+	background-position: right 0% bottom 41%;
 }
 
 
 @media (min-width: 992px) {
 	.header {
+		height: 75vh;
 		background-image: url("../img/header/header_desktop.jpg");
 	}
 }

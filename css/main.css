@@ -9,11 +9,12 @@
 html,
 body {
   height: 100%;
-  background-color: #414141;
 }
 
 html {
+  font-family: "Amiko", serif;
   font-size: 62.5%;
+  background-color: #414141;
   scroll-behavior: smooth;
 }
 
@@ -48,11 +49,15 @@ table {
 
 .header {
   width: 100%;
+  height: 40vh;
   background-image: url("../img/header/header_mobile.png");
+  background-size: cover;
+  background-position: right 0% bottom 41%;
 }
 
 @media (min-width: 992px) {
   .header {
+    height: 75vh;
     background-image: url("../img/header/header_desktop.jpg");
   }
 }/*# sourceMappingURL=main.css.map */
