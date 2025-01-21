@@ -52,7 +52,7 @@ table {
   height: 40vh;
   background-image: url("../img/header/header_mobile.png");
   background-size: cover;
-  background-position: right 0% bottom 41%;
+  background-position: center;
 }
 
 @media (min-width: 992px) {
