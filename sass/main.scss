@@ -18,23 +18,13 @@ body {
 html {
 	font-family: fonts.$mainText;
 	font-size: 62.5%;
+	text-transform: uppercase;
 	background-color: colors.$backgroundDarkmode;
 	scroll-behavior: smooth;
 }
 
 a {
 	text-decoration: none;
-}
-
-img {
-	height: auto;
-}
-
-input,
-button,
-textarea,
-select {
-	font-family: inherit;
 }
 
 button {
