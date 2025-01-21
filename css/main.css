@@ -44,4 +44,15 @@ textarea {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+.header {
+  width: 100%;
+  background-image: url("../img/header/header_mobile.png");
+}
+
+@media (min-width: 992px) {
+  .header {
+    background-image: url("../img/header/header_desktop.jpg");
+  }
 }/*# sourceMappingURL=main.css.map */
