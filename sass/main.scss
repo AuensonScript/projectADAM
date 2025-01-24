@@ -10,11 +10,6 @@
 	padding: 0;
 }
 
-html,
-body {
-	height: 100%;
-}
-
 html {
 	font-family: fonts.$mainText;
 	font-size: 62.5%;
@@ -28,37 +23,26 @@ a {
 }
 
 button {
-	border: none;
 	cursor: pointer;
-}
-
-textarea {
-	resize: vertical;
-}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
 }
 
 // NAVIGATION BUTTON
 
 // NAVIGATION
 
-// HEADER 
+// HEADER
 
 .header {
-	width: 100%;
 	height: 40vh;
 	background-image: url("../img/header/header_mobile.png");
 	background-size: cover;
-	background-position: center;
 }
 
+// QUOTES
 
 @media (min-width: 992px) {
 	.header {
-		height: 75vh;
+		height: 60vh;
 		background-image: url("../img/header/header_desktop.jpg");
 	}
 }
