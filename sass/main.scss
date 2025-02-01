@@ -19,6 +19,7 @@ html {
 body {
 	font-family: fonts.$mainText;
 	font-size: 1.6rem;
+	text-transform: uppercase;
 	background-color: colors.$backgroundDarkmode;
 }
 
@@ -50,18 +51,17 @@ body {
 }
 
 .section-heading {
-    position: relative;
-    margin-bottom: 2em;
-    font-size: 3rem;
-    font-weight: 300;
-    text-transform: uppercase;
-    text-align: center;
-    color: colors.$textColorDark;
-    letter-spacing: 2px;
+	position: relative;
+	margin-bottom: 2em;
+	font-size: 3rem;
+	font-weight: 300;
+	text-align: center;
+	color: colors.$textColorDark;
+	letter-spacing: 2px;
 }
 
 .section-padding {
-    padding: 6em 2em;
+	padding: 6em 2em;
 }
 
 // NAVIGATION
@@ -183,13 +183,59 @@ body {
 
 .header__heading {
 	font-family: fonts.$titleText;
-	text-transform: uppercase;
 	font-size: 4.8rem;
 }
 
 // PERSONAL STATISTICS
 
-
+.statistics-wrapper {
+	display: flex;
+	justify-content: space-around;
+	.holo-card {
+		height: 450px;
+		width: 300px;
+		border-radius: 10%;
+		background-image: url("../img/card/card_front_desktop.PNG");
+		background-position: center;
+		background-size: cover;
+		.frontside-card {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			.sticker-box {
+				
+			}
+			.text-box {
+				padding: 10px;
+				color: colors.$textColorDark;
+				text-align: center;
+			}
+		}
+		.reverseside-card {
+			display: none;
+		}
+	}
+	.stats {
+		.birth-stats {
+			.timebox {
+				display: flex;
+				justify-content: space-around;
+				text-align: center;
+				.time {
+					padding: 15px;
+				}
+			}
+		}
+		.stats-wheel-box {
+			display: flex;
+			flex-wrap: wrap;
+			.stats-wheel {
+				width: 49%;
+			}
+		}
+	}
+}
 
 // QUOTE SECTION
 
