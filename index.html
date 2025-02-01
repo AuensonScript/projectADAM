@@ -19,34 +19,34 @@
 				<div class="burger-btn__bars"></div>
 			</div>
 		</button>
+
 		<nav class="nav">
-			<a href="#personalStatistics">statystyki</a>
-			<a href="#yearFunfacts">ciekawostki</a>
-			<a href="#milestones">kamienie milowe</a>
-			<a href="#wishes">życzenia</a>
-			<div class="dark-light-mode">
-				<span></span>
-				<p>light mode</p>
+			<div class="nav__items">
+				<a href="#personalStatistics" class="nav__item">statystyki</a>
+				<a href="#yearFunfacts" class="nav__item">ciekawostki</a>
+				<a href="#milestones" class="nav__item">kamienie milowe</a>
+				<a href="#wishes" class="nav__item">życzenia</a>
+				<div class="dark-light-mode nav__item">
+					<span></span>
+					<p>light mode</p>
+				</div>
 			</div>
 		</nav>
-		<header class="header">
-			<div class="header-img">
-				<h1 class="header__heading">wszystkiego najlepszego adam!</h1>
-				<a href="#personalStatistics" class="header-button">
-					<i class="fa-solid fa-chevron-down"></i>
-				</a>
-				<div class="white-block white-block-left"></div>
-			</div>
-			<div class="header-shadow"></div>
+
+		<header class="header section">
+			<h1 class="header__heading">wszystkiego najlepszego adam!</h1>
+			<a href="#personalStatistics" class="header-button">
+				<i class="fa-solid fa-chevron-down"></i>
+			</a>
+			<div class="white-block white-block-left"></div>
 		</header>
-		<main>
+
+		<main class="main">
 			<section class="personal-statistics" id="personalStatistics">
 				<div class="wrapper">
-					<div class="holo-card">
+					<h2 class="section-heading">statystyki</h2>
+					<div class="holo-card" onclick="void(0)">
 						<div class="frontside-card">
-							<img
-								src="./img/card/card_front_desktop.PNG"
-								alt="Chłopak w stroju koszykarskim, zwrócony tyłem do kamery, w trakcie gry w koszykówkę." />
 							<img
 								src="./img/sticker.png"
 								alt="Naklejka koszulki koszykarskiej z numerem 18 i nazwiskiem Clements" />
@@ -55,16 +55,16 @@
 						</div>
 						<div class="reverseside-card">
 							<div class="upper-card-side">
-								<div class="player-info one">
-									<p><span>Imię: </span>Adam</p>
-									<p><span>Nazwisko: </span>Clements</p>
-									<p><span>Wzrost: </span>na wysokościach</p>
-									<p><span>Waga: </span>ciężar sukcesu</p>
-									<p><span>Data debiutu: </span>03.02.2007</p>
-								</div>
+								<ul class="holo-card__card-info-list">
+									<li class="holo-card__card-info-list-item">Imię: </span>Adam</li>
+									<li class="holo-card__card-info-list-item"><span>Nazwisko: </span>Clements</li>
+									<li class="holo-card__card-info-list-item"><span>Wzrost: </span>na wysokościach</li>
+									<li class="holo-card__card-info-list-item"><span>Waga: </span>ciężar sukcesu</li>
+									<li class="holo-card__card-info-list-item"><span>Data debiutu: </span>03.02.2007</li>
+								</ul>
 								<img
-									src="./img/card/card-revers_desktop.PNG"
-									alt="Chłopak w stroju koszykarskim rzucający piłką." />
+										src="./img/card/card-revers_desktop.PNG"
+										alt="Chłopak w stroju koszykarskim rzucający piłką." />
 							</div>
 							<div class="lower-card-side">
 								<div class="player-info two">
@@ -117,45 +117,39 @@
 					</div>
 				</div>
 			</section>
-			<section class="quote-section">
-				<picture>
-					<source srcset="./img/quotes/quote_one_desktop.jpg" media="(min-width: 992px)" />
-					<img
-						src="./img/quotes/quote_one_mobile.png"
-						alt="Michael Jordan trzyma piłkę do koszykówki. Stoi na wprost do kamery z małym uśmiechem na twarzy. Tło jednolite." />
-				</picture>
-				<h2>"To learn to succeed, you must first learn to fail."</h2>
-				<p>~ Michael Jordan</p>
-				<div class="bg-shadow"></div>
+
+			<section class="quote-section first-quote section">
+				<div class="white-block white-block-left"></div>
+				<div class="white-block white-block-right"></div>
+				<p class="quote-section__title">“To learn to succeed, you must first learn to fail.”</p>
+				<hr>
+				<p class="quote-section__text">~ Michael Jordan</p>
 			</section>
+
 			<section class="year-funfacts" id="yearFunfacts">
 				<div class="wrapper"></div>
 			</section>
-			<section class="quote-section">
-				<picture>
-					<source srcset="./img/quotes/quote_two_desktop.jpg" media="(min-width: 992px)" />
-					<img
-						src="./img/quotes/quote_two_mobile.png"
-						alt="Michael Jordan trzyma piłkę do koszykówki stojąc na wprost do kamery z dużym uśmiechem. W tle rozmyty stadion z widownią." />
-				</picture>
-				<h2>"If you do the work, you get rewarded. There are no shortcuts in life."</h2>
-				<p>~ Michael Jordan</p>
-				<div class="bg-shadow"></div>
+
+			<section class="quote-section second-quote section">
+				<div class="white-block white-block-left"></div>
+				<div class="white-block white-block-right"></div>
+				<p class="quote-section__title">“If you do the work, you get rewarded. There are no shortcuts in life.”</p>
+				<hr>
+				<p class="quote-section__text">~ Michael Jordan</p>
 			</section>
+
 			<section class="milestones" id="milestones">
 				<div class="wrapper"></div>
 			</section>
-			<section class="quote-section">
-				<picture>
-					<source srcset="./img/quotes/quote_three_desktop.jpg" media="(min-width: 992px)" />
-					<img
-						src="./img/quotes/quote_three_mobile.png"
-						alt="Michael Jordan z poważną miną trzyma świecącą się piłkę do koszykówki z której unosi się fioletowy dym." />
-				</picture>
-				<h2>"Some people want it to happen, some wish it would happen, others make it happen"</h2>
-				<p>~ Michael Jordan</p>
-				<div class="bg-shadow"></div>
+
+			<section class="quote-section third-quote section">
+				<div class="white-block white-block-left"></div>
+				<div class="white-block white-block-right"></div>
+				<p class="quote-section__title">"Some people want it to happen, some wish it would happen, others make it happen"</p>
+				<hr>
+				<p class="quote-section__text">~ Michael Jordan</p>
 			</section>
+
 			<section class="wishes" id="wishes">
 				<div class="wrapper">
 					<iframe
@@ -169,12 +163,15 @@
 						allowfullscreen></iframe>
 				</div>
 			</section>
+
 			<i class="fa-solid fa-chevron-up"></i>
 		</main>
+
 		<footer>
 			<p>@AuensonScript <span class="current-year"></span></p>
 			<a href="./copyrights.html">Prawa autorskie</a>
 		</footer>
+
 		<script src="./js/script.js"></script>
 	</body>
 </html>

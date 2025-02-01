@@ -1,113 +1,241 @@
 @use "./animations" as animations;
 @use "./colors" as colors;
 @use "./fonts" as fonts;
+@use "./mixins" as mixins;
 
 *,
-*::after,
-*::before {
+*::before,
+*::after {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 }
 
 html {
-	font-family: fonts.$mainText;
 	font-size: 62.5%;
-	text-transform: uppercase;
-	background-color: colors.$backgroundDarkmode;
 	scroll-behavior: smooth;
 }
 
-a {
-	text-decoration: none;
+body {
+	font-family: fonts.$mainText;
+	font-size: 1.6rem;
+	background-color: colors.$backgroundDarkmode;
 }
 
-button {
-	cursor: pointer;
+// COMPONENTS
+
+.wrapper {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1200px;
 }
 
-// NAVIGATION BUTTON
+.white-block {
+	position: absolute;
+	height: 40px;
+	width: 60%;
+	background-color: colors.$backgroundDarkmode;
+
+	&-left {
+		bottom: 0;
+		left: -50px;
+		transform: skew(45deg);
+	}
+
+	&-right {
+		top: 0;
+		right: -50px;
+		transform: skew(45deg);
+	}
+}
+
+.section-heading {
+    position: relative;
+    margin-bottom: 2em;
+    font-size: 3rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
+    color: colors.$textColorDark;
+    letter-spacing: 2px;
+}
+
+.section-padding {
+    padding: 6em 2em;
+}
 
 // NAVIGATION
 
-// HEADER
+.burger-btn {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	padding: 1em;
+	background: none;
+	border: 1px solid transparent;
+	cursor: pointer;
+	z-index: 10;
+	.burger-btn:focus {
+		outline: none;
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		border-radius: 8px;
+	}
+	.burger-btn:hover {
+		.burger-btn__bars::before,
+		.burger-btn__bars::after {
+			width: 100%;
+		}
+	}
+	.burger-btn__box {
+		position: relative;
+		width: 40px;
+		height: 30px;
+	}
+	.burger-btn__bars,
+	.burger-btn__bars::before,
+	.burger-btn__bars::after {
+		position: absolute;
+		right: 0;
+		height: 3px;
+		content: "";
+		background-color: colors.$textColorDark;
+		transition: width 0.3s;
+	}
+	.burger-btn__bars {
+		width: 100%;
+	}
+	.burger-btn__bars::before {
+		top: 27px;
+		width: 30%;
+		transition-delay: 0.1s;
+	}
+	.burger-btn__bars::after {
+		top: 13px;
+		width: 60%;
+	}
+}
 
-.header {
-	.header-img {
+.nav {
+	position: fixed;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+	transform: translateX(100%);
+	transition: 0.5s cubic-bezier(0.65, 0.65, 0.36, 1);
+	background-image: colors.$navBackgroundColor;
+	z-index: 100;
+	.nav__item {
+		position: relative;
+		display: block;
+		margin: 0.5em -2em;
+		font-size: 2.8rem;
+		color: colors.$textColorDark;
+		text-decoration: none;
+	}
+	.nav__item::before {
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 80%;
-		background-image: url("../img/header/header_mobile.png");
-		background-size: cover;
-		background-position: 100% 60%;
-		z-index: 0;
-		.header__heading {
-			position: absolute;
-			top: 30%;
-			left: 50%;
-			transform: translateX(-50%);
-			font-size: 3.5rem;
-			color: colors.$textColorDark;
-			filter: drop-shadow(0 0 0.1em colors.$darkAccentColor)
-				drop-shadow(0.1em 0 0.1em colors.$backgroundDarkmode);
-		}
-		.header-button {
-			position: absolute;
-			bottom: 0;
-			left: 50%;
-			transform: translateX(-50%);
-			display: flex;
-			flex-direction: column;
-			text-align: center;
-			color: colors.$textColorDark;
-			.fa-chevron-down {
-				font-size: 4rem;
-				animation: bouncingArrow 0.9s linear infinite;
-				transition: .2s;
-			}
-			@keyframes bouncingArrow {
-				0% {
-					transform: translateY(0%);
-				}
-				50% {
-					transform: translateY(-20%);
-					scale: 110%;
-				}
-				100% {
-					transform: translateY(0%);
-				}
-			}
-			.fa-chevron-down:hover {
-				filter: drop-shadow(0 0 .1em colors.$darkAccentColor);
-			}
-		}
+		width: 3px;
+		height: 100%;
+		transform: scaleY(0);
+		background-color: colors.$textColorDark;
+		transition: transform 0.3s;
+		content: "";
+	}
+	.nav__item:hover::before {
+		transform: scaleY(1);
 	}
 }
 
-// QUOTES
+@keyframes navItemsAnimation {
+	from {
+		transform: translateX(200%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+.nav--active {
+	transform: translateX(0);
+}
+
+//  HEADER
+
+.header {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 2em;
+	height: 75vh;
+	text-align: center;
+	color: colors.$textColorDark;
+	background-image: colors.$backgroundShadow, url("../img/header/header_mobile.png");
+	background-size: cover;
+	background-position-y: 60%;
+}
+
+.header__heading {
+	font-family: fonts.$titleText;
+	text-transform: uppercase;
+	font-size: 4.8rem;
+}
+
+// PERSONAL STATISTICS
+
+
+
+// QUOTE SECTION
 
 .quote-section {
-	picture {
-		width: 100%;
-		height: 50%;
+	position: relative;
+	padding: 10em -2em;
+	width: 100%;
+	height: 20vh;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	text-align: center;
+	color: colors.$textColorDark;
+	overflow: hidden;
+	.first-quote {
+		background-image: colors.$backgroundShadow, url("../img/quotes/quote_one_mobile.png");
 	}
-	.bg-shadow {
-		position: relative;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: #333;
-		z-index: 10;
+	.second-quote {
+		background-image: colors.$backgroundShadow, url("../img/quotes/quote_two_mobile.png");
+	}
+	.third-quote {
+		background-image: colors.$backgroundShadow, url("../img/quotes/quote_three_mobile.png");
+	}
+	.quote-section__title {
+		font-family: fonts.$quoteText;
+		margin-bottom: 0.5em;
+		font-size: 4.8rem;
+	}
+	.quote-section__text {
+		padding: 1em 0;
 	}
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
 	.header {
-		.header-img {
-			background-image: url("../img/header/header_desktop.jpg");
+		background-image: colors.$backgroundShadow, url("../img/header/header_desktop.jpg");
+	}
+	.quote-section {
+		.first-quote {
+			background-image: colors.$backgroundShadow, url("../img/quotes/quote_one_desktop.jpg");
+		}
+		.second-quote {
+			background: colors.$backgroundShadow, url("../img/quotes/quote_two_desktop.jpg");
+		}
+		.third-quote {
+			background-image: colors.$backgroundShadow, url("../img/quotes/quote_three_desktop.jpg");
 		}
 	}
 }
