@@ -53,10 +53,12 @@ body {
 .section-heading {
 	position: relative;
 	margin-bottom: 2em;
-	font-size: 3rem;
+	font-family: fonts.$titleText;
+	font-size: 4.5rem;
 	font-weight: 300;
 	text-align: center;
-	color: colors.$textColorDark;
+	color: transparent;
+	-webkit-text-stroke: 1px colors.$textColorDark;
 	letter-spacing: 2px;
 }
 
@@ -170,12 +172,13 @@ body {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 	padding: 2em;
 	height: 75vh;
 	text-align: center;
-	color: colors.$textColorDark;
+	color: transparent;
+	-webkit-text-stroke: 1.5px colors.$textColorDark;
 	background-image: colors.$backgroundShadow, url("../img/header/header_mobile.png");
 	background-size: cover;
 	background-position-y: 60%;
@@ -203,9 +206,8 @@ body {
 			flex-direction: column;
 			justify-content: space-between;
 			align-items: center;
-			.sticker-box {
-				
-			}
+			// .sticker-box {
+			// }
 			.text-box {
 				padding: 10px;
 				color: colors.$textColorDark;
@@ -241,31 +243,78 @@ body {
 
 .quote-section {
 	position: relative;
-	padding: 10em -2em;
+	padding: 10em 2em;
 	width: 100%;
-	height: 20vh;
+	height: 70vh;
 	background-size: cover;
-	background-position: center;
-	background-attachment: fixed;
 	text-align: center;
 	color: colors.$textColorDark;
 	overflow: hidden;
-	.first-quote {
-		background-image: colors.$backgroundShadow, url("../img/quotes/quote_one_mobile.png");
-	}
-	.second-quote {
-		background-image: colors.$backgroundShadow, url("../img/quotes/quote_two_mobile.png");
-	}
-	.third-quote {
-		background-image: colors.$backgroundShadow, url("../img/quotes/quote_three_mobile.png");
-	}
 	.quote-section__title {
 		font-family: fonts.$quoteText;
-		margin-bottom: 0.5em;
-		font-size: 4.8rem;
+		margin: 5em 0 0 0;
+		font-size: 4rem;
+		text-shadow: 0 0 5px colors.$darkAccentColor;
 	}
 	.quote-section__text {
 		padding: 1em 0;
+		font-size: 1.5rem;
+	}
+}
+.first-quote {
+	background-image: colors.$backgroundShadow, url("../img/quotes/quote_one_mobile.png");
+}
+.second-quote {
+	background-image: colors.$backgroundShadow, url("../img/quotes/quote_two_mobile.png");
+}
+.third-quote {
+	background-image: colors.$backgroundShadow, url("../img/quotes/quote_three_mobile.png");
+}
+
+
+// WISHES SECTION
+
+.wishes {
+	iframe {
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 560px;
+		height: 315px;
+	}
+}
+
+// CHEVRON UP
+
+.chevron-up {
+	position: fixed;
+	bottom: 5%;
+	right: 0%;
+	transform: translateX(-50%);
+	background-color: colors.$chevronUpBackground;
+	border-radius: 50%;
+	transition: box-shadow 0.4s;
+	.fa-chevron-up {
+		padding: 10px;
+		font-size: 3rem;
+		color: colors.$textColorDark;
+		animation: bounceUp 1.5s linear infinite;
+	}
+}
+
+.chevron-up:hover {
+	box-shadow: 0 0 10px colors.$mainAccentColor;
+}
+
+@keyframes bounceUp {
+	0%,
+	50%,
+	100% {
+		transform: translateY(-2.5%);
+	}
+	25%,
+	75% {
+		transform: translateY(2.5%);
 	}
 }
 
@@ -273,15 +322,13 @@ body {
 	.header {
 		background-image: colors.$backgroundShadow, url("../img/header/header_desktop.jpg");
 	}
-	.quote-section {
-		.first-quote {
-			background-image: colors.$backgroundShadow, url("../img/quotes/quote_one_desktop.jpg");
-		}
-		.second-quote {
-			background: colors.$backgroundShadow, url("../img/quotes/quote_two_desktop.jpg");
-		}
-		.third-quote {
-			background-image: colors.$backgroundShadow, url("../img/quotes/quote_three_desktop.jpg");
-		}
+	.first-quote {
+		background-image: colors.$backgroundShadow, url("../img/quotes/quote_one_desktop.jpg");
+	}
+	.second-quote {
+		background: colors.$backgroundShadow, url("../img/quotes/quote_two_desktop.jpg");
+	}
+	.third-quote {
+		background-image: colors.$backgroundShadow, url("../img/quotes/quote_three_desktop.jpg");
 	}
 }
