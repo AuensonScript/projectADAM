@@ -15,7 +15,7 @@ body {
   font-family: "Amiko", serif;
   font-size: 1.6rem;
   text-transform: uppercase;
-  background-color: #414141;
+  background-color: rgb(65, 65, 65);
 }
 
 .wrapper {
@@ -28,7 +28,7 @@ body {
   position: absolute;
   height: 40px;
   width: 60%;
-  background-color: #414141;
+  background-color: rgb(65, 65, 65);
 }
 .white-block-left {
   bottom: 0;
@@ -39,6 +39,10 @@ body {
   top: 0;
   right: -50px;
   transform: skew(45deg);
+}
+
+.section {
+  padding-bottom: 4rem;
 }
 
 .section-heading {
@@ -113,16 +117,20 @@ body {
   height: 100vh;
   width: 100%;
   transform: translateX(100%);
+  background-image: linear-gradient(310deg, rgb(65, 65, 65), rgba(255, 68, 0, 0.87), rgb(65, 65, 65));
   transition: 0.5s cubic-bezier(0.65, 0.65, 0.36, 1);
-  background-image: linear-gradient(315deg, rgb(207, 139, 13), rgb(201, 96, 21));
   z-index: 100;
 }
 .nav .nav__item {
   position: relative;
   display: block;
-  margin: 0.5em -2em;
-  font-size: 2.8rem;
-  color: #f5f5f5;
+  margin: 0.5em 2em;
+  font-family: "Glegoo", serif;
+  font-size: 5rem;
+  color: transparent;
+  text-shadow: 0 0 2.5px #ff6f00;
+  -webkit-text-stroke: 0.3rem #333;
+  letter-spacing: 0.55rem;
   text-decoration: none;
 }
 .nav .nav__item::before {
@@ -132,7 +140,7 @@ body {
   width: 3px;
   height: 100%;
   transform: scaleY(0);
-  background-color: #f5f5f5;
+  background-color: #333;
   transition: transform 0.3s;
   content: "";
 }
@@ -154,10 +162,6 @@ body {
 
 .header {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
   padding: 2em;
   height: 75vh;
   text-align: center;
@@ -167,10 +171,23 @@ body {
   background-size: cover;
   background-position-y: 60%;
 }
-
-.header__heading {
+.header .header__heading {
+  position: absolute;
+  top: 32%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-family: "Glegoo", serif;
   font-size: 4.8rem;
+}
+.header .header-button {
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: #f5f5f5;
+  animation: bounceUpDown 3s infinite;
+  z-index: 50;
 }
 
 .statistics-wrapper {
@@ -186,10 +203,18 @@ body {
   background-size: cover;
 }
 .statistics-wrapper .holo-card .frontside-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+.statistics-wrapper .holo-card .frontside-card .sticker-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 50%;
+  width: 50%;
 }
 .statistics-wrapper .holo-card .frontside-card .text-box {
   padding: 10px;
@@ -229,7 +254,7 @@ body {
   font-family: "Swanky and Moo Moo", serif;
   margin: 5em 0 0 0;
   font-size: 4rem;
-  text-shadow: 0 0 5px #ff4500;
+  text-shadow: 0 0 5px rgb(255, 69, 0);
 }
 .quote-section .quote-section__text {
   padding: 1em 0;
@@ -248,89 +273,495 @@ body {
   background-image: linear-gradient(180deg, rgba(65, 65, 65, 0.5), rgba(0, 0, 0, 0.5)), url("../img/quotes/quote_three_mobile.png");
 }
 
-.card-list {
+.year-funfacts .card-wrapping {
+  display: flex;
+  padding: 2rem 8rem;
+  margin-bottom: 4rem;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  box-shadow: -10px -1px 15px #000, 1px 1px 15px #000;
+}
+.year-funfacts .card-wrapping .cards-slider__header-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 400px;
+  min-width: 250px;
+  border-radius: 5%;
+  overflow: hidden;
+}
+.year-funfacts .card-wrapping .cards-slider__header-card .cards-slider__header-card-title,
+.year-funfacts .card-wrapping .cards-slider__header-card .cards-slider__header-card-text {
+  color: #f5f5f5;
+  text-shadow: 0.1rem 0.1rem 10px rgb(0, 0, 0);
+  z-index: 1;
+}
+.year-funfacts .card-wrapping .cards-slider__header-card .cards-slider__header-card-title {
+  font-family: "Glegoo", serif;
+  font-size: 3.5rem;
+  -webkit-text-stroke: 0.8px black;
+}
+.year-funfacts .card-wrapping .cards-slider__header-card .cards-slider__header-card-text {
+  font-size: 1.2rem;
+  -webkit-text-stroke: 0.1px black;
+}
+.year-funfacts .card-wrapping .cards-slider__header-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  filter: blur(0.2rem);
+  z-index: 0;
+}
+.year-funfacts .card-wrapping .music-card::before {
+  background-image: url("../img/cards_sliders/cards_headers/music_card_desktop.png");
+}
+.year-funfacts .card-wrapping .movies-card::before {
+  background-image: url("../img/cards_sliders/cards_headers/movies_card_desktop.png");
+}
+.year-funfacts .card-wrapping .tv-series-card::before {
+  background-image: url("../img/cards_sliders/cards_headers/tv-series_card_desktop.png");
+}
+.year-funfacts .card-wrapping .sport-card::before {
+  background-image: url("../img/cards_sliders/cards_headers/sports_card_desktop.png");
+}
+.year-funfacts .card-wrapping .politics-card::before {
+  background-image: url("../img/cards_sliders/cards_headers/politics_card_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list {
   display: flex;
   padding: 3rem;
   overflow-x: scroll;
 }
-
-.card-list::-webkit-scrollbar {
-  width: 1rem;
-  height: 1rem;
-}
-
-.card-list::-webkit-scrollbar-thumb {
-  background: #ff6f00;
-  box-shadow: inset 2px 2px 2px hsla(34, 100%, 90%, 0.25), inset -2px -2px 2px rgba(0, 0, 0, 0.25);
-}
-
-.card-list::-webkit-scrollbar-track {
-  background: linear-gradient(90deg, #201c29, #201c29 1px, #17141d 0, #17141d);
-}
-
-.card {
+.year-funfacts .card-wrapping .slider-list .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
   height: 350px;
   width: 400px;
   min-width: 250px;
   padding: 1.5rem;
   border-radius: 16px;
-  background: #ff6f00;
+  background: rgb(65, 65, 65);
+  filter: grayscale(100%);
+  overflow: hidden;
   box-shadow: -1rem 0 3rem #000;
-  display: flex;
-  flex-direction: column;
   transition: 0.2s;
-  margin: 0;
   scroll-snap-align: start;
   clear: both;
-  position: relative;
 }
-
-.card:focus-within ~ .card, .card:hover ~ .card {
-  transform: translateX(130px);
-}
-
-.card:hover {
-  transform: translateY(-1rem);
-}
-
-.card:not(:first-child) {
-  margin-left: -130px;
-}
-
-.card-header {
+.year-funfacts .card-wrapping .slider-list .card .card-header {
   margin-bottom: auto;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 10px #000, 0 0 5px #000;
 }
-
-.card-header p {
+.year-funfacts .card-wrapping .slider-list .card .card-header p {
   font-size: 14px;
   margin: 0 0 1rem;
-  color: #f5f5f5;
 }
-
-.card-header h2 {
-  font-size: 20px;
+.year-funfacts .card-wrapping .slider-list .card .card-header h2 {
+  font-size: 2.2rem;
   margin: 0.25rem 0 auto;
   text-decoration: none;
+  -webkit-text-stroke: 0.05em black;
   color: inherit;
   border: 0;
   display: inline-block;
   cursor: pointer;
 }
-
-.card-header h2:hover {
-  background: linear-gradient(90deg, #ff8a00, #e52e71);
+.year-funfacts .card-wrapping .slider-list .card .card-header h2:hover {
+  background: linear-gradient(90deg, #ff8a00, #e52e2e);
   text-shadow: none;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
+}
+.year-funfacts .card-wrapping .slider-list .card:focus-within ~ .card,
+.year-funfacts .card-wrapping .slider-list .card:hover ~ .card {
+  transform: translateX(130px);
+}
+.year-funfacts .card-wrapping .slider-list .card:hover {
+  filter: grayscale(0%);
+  transform: translateY(-1rem);
+}
+.year-funfacts .card-wrapping .slider-list .card:not(:first-child) {
+  margin-left: -130px;
+}
+.year-funfacts .card-wrapping .slider-list .card.beyonce-img {
+  background-image: url("../img/cards_sliders/songs/beyonce_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.fob-img {
+  background-image: url("../img/cards_sliders/songs/fob_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.furtado-img {
+  background-image: url("../img/cards_sliders/songs/furtado_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.akon-img {
+  background-image: url("../img/cards_sliders/songs/akon_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.mcr-img {
+  background-image: url("../img/cards_sliders/songs/mcr_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.timberlake-img {
+  background-image: url("../img/cards_sliders/songs/timberlake_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.avril-img {
+  background-image: url("../img/cards_sliders/songs/avril_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.patrol-img {
+  background-image: url("../img/cards_sliders/songs/patrol_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.redhot-img {
+  background-image: url("../img/cards_sliders/songs/redhot_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.yankovic-img {
+  background-image: url("../img/cards_sliders/songs/yankovic_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.spider-img {
+  background-image: url("../img/cards_sliders/films/spider_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.shrek-img {
+  background-image: url("../img/cards_sliders/films/shrek_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.pirates-img {
+  background-image: url("../img/cards_sliders/films/pirates_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.rat-img {
+  background-image: url("../img/cards_sliders/films/rat_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.transformers-img {
+  background-image: url("../img/cards_sliders/films/transformers_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.potter-img {
+  background-image: url("../img/cards_sliders/films/potter_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.old-man-img {
+  background-image: url("../img/cards_sliders/films/no-country_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.legend-img {
+  background-image: url("../img/cards_sliders/films/legend_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.sweeney-img {
+  background-image: url("../img/cards_sliders/films/sweeney_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.juno-img {
+  background-image: url("../img/cards_sliders/films/juno_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.tbbt-img {
+  background-image: url("../img/cards_sliders/tvshows/tbbt_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.gossipgirl-img {
+  background-image: url("../img/cards_sliders/tvshows/gossipgirl_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.tudors-img {
+  background-image: url("../img/cards_sliders/tvshows/tudors_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.gordon-img {
+  background-image: url("../img/cards_sliders/tvshows/gordon_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.californication-img {
+  background-image: url("../img/cards_sliders/tvshows/californication_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.phineas-img {
+  background-image: url("../img/cards_sliders/tvshows/phineas_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.graham-img {
+  background-image: url("../img/cards_sliders/tvshows/graham_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.gottalent-img {
+  background-image: url("../img/cards_sliders/tvshows/gottalent_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.euro2012-img {
+  background-image: url("../img/cards_sliders/world_events/euro2012_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.schengen-img {
+  background-image: url("../img/cards_sliders/world_events/schengen_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.slovenia-img {
+  background-image: url("../img/cards_sliders/world_events/euro_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.steve-jobs-img {
+  background-image: url("../img/cards_sliders/world_events/steve-jobs_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.france-img {
+  background-image: url("../img/cards_sliders/world_events/france_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.best-actor-img {
+  background-image: url("../img/cards_sliders/world_events/best-actor_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.best-actress-img {
+  background-image: url("../img/cards_sliders/world_events/best-actress_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.best-picture-img {
+  background-image: url("../img/cards_sliders/world_events/best-picture_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.rowling-img {
+  background-image: url("../img/cards_sliders/world_events/rowling_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.twilight-img {
+  background-image: url("../img/cards_sliders/world_events/twilight_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list::-webkit-scrollbar {
+  width: 1rem;
+  height: 0.65rem;
+}
+.year-funfacts .card-wrapping .slider-list::-webkit-scrollbar-thumb {
+  background: rgb(255, 69, 0);
+  box-shadow: inset 2px 2px 2px hsla(34, 100%, 90%, 0.25), inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+}
+.year-funfacts .card-wrapping .slider-list::-webkit-scrollbar-track {
+  background: linear-gradient(90deg, #201c29, #201c29 1px, #17141d 0, #17141d);
+}
+
+.milestones {
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+}
+.milestones:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 100%;
+  width: 4px;
+  background-color: #fff;
+}
+.milestones .entries {
+  width: calc(100% - 80px);
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+  left: -5px;
+}
+.milestones .entries .entry {
+  width: calc(50% - 80px);
+  float: left;
+  padding: 20px;
+  clear: both;
+  text-align: right;
+}
+.milestones .entries .entry:not(:first-child) {
+  margin-top: -60px;
+}
+.milestones .entries .entry .title {
+  position: relative;
+  margin-bottom: 12px;
+  font-family: "Glegoo", serif;
+  font-size: 2rem;
+  color: #ff6f00;
+}
+.milestones .entries .entry .title:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border: 4px solid #e60e0e;
+  border-radius: 50%;
+  z-index: 1000;
+}
+.milestones .entries .entry .title.big:before {
+  width: 24px;
+  height: 24px;
+  transform: translate(8px, -50%);
+}
+.milestones .entries .entry .body {
+  color: #f5f5f5;
+}
+.milestones .entries .entry .body p {
+  line-height: 1.4em;
+}
+.milestones .entries .entry:nth-child(2n) {
+  text-align: left;
+  float: right;
+}
+.milestones .entries .entry:nth-child(2n) .title:before {
+  left: -63px;
+}
+.milestones .entries .entry:nth-child(2n) .title.big:before {
+  transform: translate(-50%, -50%);
+}
+
+.bday-cake {
+  margin-bottom: 1rem;
+  border: 0.1rem solid orange;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem orange;
+}
+.bday-cake .cake-wishes,
+.bday-cake .cake-wishes-signature {
+  text-align: center;
+  width: 100%;
+}
+.bday-cake .cake-wishes {
+  font-family: "Swanky and Moo Moo", serif;
+  color: #ff6f00;
+  font-size: 1.5em;
+  letter-spacing: 0.1em;
+}
+.bday-cake .cake-wishes-signature {
+  font-family: "Amiko", serif;
+  color: #f5f5f5;
+  font-size: 0.8em;
+  line-height: 2em;
+}
+.bday-cake .cake {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-top: 2.2rem;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+}
+.bday-cake .cake .candle {
+  background: #ffffff;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -2.5px;
+  margin-top: -8.3333333333px;
+  width: 5px;
+  height: 16.6666666667px;
+}
+.bday-cake .cake .candle .flame {
+  border-radius: 100%;
+  box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  margin-left: -3.3333333333px;
+  width: 6.6666666667px;
+  height: 12.5px;
+}
+.bday-cake .cake .candle .flame:nth-child(1) {
+  animation: flameFire 2s infinite;
+}
+.bday-cake .cake .candle .flame:nth-child(2) {
+  animation: flameFire 1.5s infinite;
+}
+.bday-cake .cake .candle .flame:nth-child(3) {
+  animation: flameFire 1s infinite;
+}
+.bday-cake .cake .candle .flame:nth-child(4) {
+  animation: flameFire 0.5s infinite;
+}
+.bday-cake .cake .candle .flame:nth-child(5) {
+  animation: flameFire 0.2s infinite;
+}
+@keyframes flameFire {
+  0% {
+    background: rgba(254, 248, 97, 0.5);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    background: rgba(255, 50, 0, 0.1);
+    transform: translateY(-10px) scale(0);
+  }
+  100% {
+    background: rgba(254, 248, 97, 0.5);
+    transform: translateY(0) scale(1);
+  }
+}
+.bday-cake .cake .candle:after,
+.bday-cake .cake .candle:before {
+  background: rgba(255, 0, 0, 0.4);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.2222222222px;
+}
+.bday-cake .cake .candle:after {
+  top: 25%;
+  left: 0;
+}
+.bday-cake .cake .candle:before {
+  top: 45%;
+  left: 0;
+}
+.bday-cake .cake .cake-frosting {
+  background: #ece7e3;
+  border-radius: 50px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  margin-left: -27.7777777778px;
+  margin-top: -5px;
+  width: 55.5555555556px;
+  height: 12.5px;
+  z-index: 10;
+}
+.bday-cake .cake .cake-frosting:after,
+.bday-cake .cake .cake-frosting:before {
+  background: #ece7e3;
+  border-radius: 100px;
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 10px;
+}
+.bday-cake .cake .cake-frosting:after {
+  top: 6.6666666667px;
+  right: 14.2857142857px;
+}
+.bday-cake .cake .cake-frosting:before {
+  top: 10px;
+  right: 9.0909090909px;
+}
+.bday-cake .cake .cake-biscuit {
+  background: #6d3826;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -25px;
+  width: 50px;
+  height: 33.3333333333px;
+}
+.bday-cake .cake .cake-biscuit:after,
+.bday-cake .cake .cake-biscuit:before {
+  background: rgba(236, 231, 227, 0.6);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 5px;
+}
+.bday-cake .cake .cake-biscuit:after {
+  top: 30%;
+  left: 0;
+}
+.bday-cake .cake .cake-biscuit:before {
+  top: 60%;
+  left: 0;
+}
+.bday-cake .cake:after {
+  background: #ebe3e1;
+  border-radius: 100px;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 2px;
 }
 
 .wishes iframe {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  width: 560px;
-  height: 315px;
+  width: 50vw;
+  height: 50vh;
 }
 
 .chevron-up {
@@ -340,13 +771,13 @@ body {
   transform: translateX(-50%);
 }
 .chevron-up .fa-chevron-up {
-  padding: 10px;
+  padding: 1rem;
   font-size: 3rem;
-  color: #f5f5f5;
-  animation: bounceUp 1.5s linear infinite;
+  color: #ff6f00;
+  animation: bounceUpDown 1.5s linear infinite;
 }
 
-@keyframes bounceUp {
+@keyframes bounceUpDown {
   0%, 50%, 100% {
     transform: translateY(-2.5%);
   }
@@ -354,6 +785,28 @@ body {
     transform: translateY(2.5%);
   }
 }
+.footer {
+  margin-top: 1.5rem;
+}
+.footer .footer-line {
+  border: 0.05rem solid #ff6f00;
+  box-shadow: 0 0 1rem rgb(255, 179, 0);
+}
+.footer .wrapper {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  color: #f5f5f5;
+}
+.footer .wrapper a {
+  color: #f5f5f5;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer .wrapper a:hover {
+  color: #ff6f00;
+}
+
 @media (min-width: 1200px) {
   .header {
     background-image: linear-gradient(180deg, rgba(65, 65, 65, 0.5), rgba(0, 0, 0, 0.5)), url("../img/header/header_desktop.jpg");
