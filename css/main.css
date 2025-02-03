@@ -61,6 +61,74 @@ body {
   padding: 6em 2em;
 }
 
+.page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(315deg, #000000, #414141);
+  transition: opacity 0.5s ease-out;
+  z-index: 1000;
+}
+.page-loader__balls {
+  display: flex;
+  gap: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+.page-loader__balls .ball {
+  width: 5rem;
+  height: 5rem;
+  animation: loaderBounce 0.9s ease-in 2 alternate both;
+}
+.page-loader__balls .ball2 {
+  animation-delay: 0.2s;
+}
+.page-loader__balls .ball3 {
+  animation-delay: 0.4s;
+}
+@keyframes loaderBounce {
+  0% {
+    transform: translateY(-45px);
+    opacity: 1;
+  }
+  24% {
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(-24px);
+  }
+  65% {
+    transform: translateY(-12px);
+  }
+  82% {
+    transform: translateY(-6px);
+  }
+  93% {
+    transform: translateY(-4px);
+  }
+  25%, 55%, 75%, 87% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+.page-loader__text {
+  font-size: 1.2rem;
+  color: #f5f5f5;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .burger-btn {
   position: fixed;
   top: 20px;
@@ -190,54 +258,165 @@ body {
   z-index: 50;
 }
 
-.statistics-wrapper {
+.personal-statistics .statistics-wrapper {
   display: flex;
   justify-content: space-around;
 }
-.statistics-wrapper .holo-card {
+.personal-statistics .statistics-wrapper .holo-card {
+  position: relative;
   height: 450px;
   width: 300px;
-  border-radius: 10%;
+  border-radius: 5%;
   background-image: url("../img/card/card_front_desktop.PNG");
+  filter: brightness(90%);
   background-position: center;
   background-size: cover;
+  box-shadow: -5px -5px 5px -5px #ffb300, 5px 5px 5px -5px #ff4500, -7px -7px 10px -5px transparent, 7px 7px 10px -5px transparent, 0 0 5px 0px rgba(255, 255, 255, 0), 0 55px 35px -20px rgba(0, 0, 0, 0.5);
+  perspective: 100rem;
+  transform-style: preserve-3d;
+  transform-origin: center right;
 }
-.statistics-wrapper .holo-card .frontside-card {
+.personal-statistics .statistics-wrapper .holo-card .frontside-card {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  height: 100%;
 }
-.statistics-wrapper .holo-card .frontside-card .sticker-box {
+.personal-statistics .statistics-wrapper .holo-card .frontside-card .sticker-wrapper .sticker-box {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: -1;
+}
+.personal-statistics .statistics-wrapper .holo-card .frontside-card .text-box {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  color: #f5f5f5;
+  text-shadow: 0 0 1rem #000;
+}
+.personal-statistics .statistics-wrapper .holo-card .frontside-card .text-box h2 {
+  -webkit-text-stroke: 0.5px #000;
+}
+.personal-statistics .statistics-wrapper .holo-card .backside-card {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+  background-color: rgb(65, 65, 65);
+  border-radius: 5%;
+}
+.personal-statistics .statistics-wrapper .holo-card .backside-card .upper-card-side .holo-card__card-info-list {
+  list-style: none;
+}
+.personal-statistics .statistics-wrapper .holo-card .frontside-card::before,
+.personal-statistics .statistics-wrapper .holo-card .backside-card::before {
+  content: "";
   position: absolute;
   top: 0;
+  left: 0;
   right: 0;
-  height: 50%;
-  width: 50%;
+  bottom: 0;
+  border-radius: 5%;
+  background-image: linear-gradient(115deg, transparent 0%, rgba(71, 237, 255, 0.6) 30%, rgba(255, 61, 236, 0.6) 70%, transparent 100%);
+  background-size: 400% 400%;
+  animation: holoEffect 4s infinite linear;
+  opacity: 0.3;
+  filter: blur(0.2rem);
+  z-index: 0;
 }
-.statistics-wrapper .holo-card .frontside-card .text-box {
-  padding: 10px;
-  color: #f5f5f5;
-  text-align: center;
+@keyframes holoEffect {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
-.statistics-wrapper .holo-card .reverseside-card {
+.personal-statistics .statistics-wrapper .holo-card .frontside-card::after,
+.personal-statistics .statistics-wrapper .holo-card .backside-card::after {
+  content: "";
+  height: 450px;
+  width: 300px;
+  border-radius: 5%;
+  background-image: url("../img/card/sparkles.webp"), url("../img/card/holo.webp");
+  background-size: 100%;
+  background-blend-mode: overlay;
+  filter: brightness(1) contrast(1);
+  overflow: hidden;
+  transition: all 0.33s ease;
+  mix-blend-mode: color-dodge;
+  opacity: 0.8;
+  z-index: 2;
+}
+.personal-statistics .statistics-wrapper .holo-card.flipped {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+.personal-statistics .statistics-wrapper .holo-card.flipped .frontside-card {
   display: none;
 }
-.statistics-wrapper .stats .birth-stats .timebox {
+.personal-statistics .statistics-wrapper .holo-card.flipped .backside-card {
+  display: block;
+}
+.personal-statistics .statistics-wrapper .stats .birth-stats {
+  padding-bottom: 1.5rem;
+  color: #f5f5f5;
+}
+.personal-statistics .statistics-wrapper .stats .birth-stats .timebox {
   display: flex;
   justify-content: space-around;
   text-align: center;
 }
-.statistics-wrapper .stats .birth-stats .timebox .time {
-  padding: 15px;
+.personal-statistics .statistics-wrapper .stats .birth-stats .timebox .time {
+  padding: 0 1.5rem 1rem;
+  font-family: "Glegoo", serif;
 }
-.statistics-wrapper .stats .stats-wheel-box {
+.personal-statistics .statistics-wrapper .stats .birth-stats .timebox .time h2 {
+  font-size: 5rem;
+  color: transparent;
+  -webkit-text-stroke: 0.1rem #f5f5f5;
+}
+.personal-statistics .statistics-wrapper .stats .stats-wheel-box {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1rem;
 }
-.statistics-wrapper .stats .stats-wheel-box .stats-wheel {
-  width: 49%;
+.personal-statistics .statistics-wrapper .stats .stats-wheel-box .stats-wheel {
+  position: relative;
+  padding: 0.5em 0;
+  width: 45%;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0.2em;
+  border-bottom: 10px solid #ff6f00;
+  box-shadow: 0 0 1.5rem #000;
+}
+.personal-statistics .statistics-wrapper .stats .stats-wheel-box .stats-wheel .stats-number {
+  display: grid;
+  place-items: center;
+  font-family: "Glegoo", serif;
+  font-size: 5rem;
+  font-weight: 600;
+  color: transparent;
+  -webkit-text-stroke: 1px #f5f5f5;
+}
+.personal-statistics .statistics-wrapper .stats .stats-wheel-box .stats-wheel .stats-text {
+  padding: 0.7rem 0;
+  color: #e0e0e0;
+  font-weight: 400;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .quote-section {
@@ -254,7 +433,7 @@ body {
   font-family: "Swanky and Moo Moo", serif;
   margin: 5em 0 0 0;
   font-size: 4rem;
-  text-shadow: 0 0 5px rgb(255, 69, 0);
+  text-shadow: 0 0 5px #ff4500;
 }
 .quote-section .quote-section__text {
   padding: 1em 0;
@@ -361,6 +540,8 @@ body {
   margin-bottom: auto;
   color: #f5f5f5;
   text-shadow: 1px 1px 10px #000, 0 0 5px #000;
+  -webkit-backdrop-filter: blur(7px);
+          backdrop-filter: blur(7px);
 }
 .year-funfacts .card-wrapping .slider-list .card .card-header p {
   font-size: 14px;
@@ -481,6 +662,24 @@ body {
 .year-funfacts .card-wrapping .slider-list .card.euro2012-img {
   background-image: url("../img/cards_sliders/world_events/euro2012_desktop.png");
 }
+.year-funfacts .card-wrapping .slider-list .card.fiba-img {
+  background-image: url("../img/cards_sliders/sport/fiba_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.nba-img {
+  background-image: url("../img/cards_sliders/sport/nba_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.plk-img {
+  background-image: url("../img/cards_sliders/sport/plk_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.malysz-img {
+  background-image: url("../img/cards_sliders/sport/malysz_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.kowalczyk-img {
+  background-image: url("../img/cards_sliders/sport/kowalczyk_desktop.png");
+}
+.year-funfacts .card-wrapping .slider-list .card.soccer-img {
+  background-image: url("../img/cards_sliders/sport/soccer_desktop.png");
+}
 .year-funfacts .card-wrapping .slider-list .card.schengen-img {
   background-image: url("../img/cards_sliders/world_events/schengen_desktop.png");
 }
@@ -502,18 +701,21 @@ body {
 .year-funfacts .card-wrapping .slider-list .card.best-picture-img {
   background-image: url("../img/cards_sliders/world_events/best-picture_desktop.png");
 }
+.year-funfacts .card-wrapping .slider-list .card.machu-img {
+  background-image: url("../img/cards_sliders/world_events/machu_desktop.png");
+}
 .year-funfacts .card-wrapping .slider-list .card.rowling-img {
   background-image: url("../img/cards_sliders/world_events/rowling_desktop.png");
 }
-.year-funfacts .card-wrapping .slider-list .card.twilight-img {
-  background-image: url("../img/cards_sliders/world_events/twilight_desktop.png");
+.year-funfacts .card-wrapping .slider-list .card.wawa-img {
+  background-image: url("../img/cards_sliders/world_events/wawa_desktop.png");
 }
 .year-funfacts .card-wrapping .slider-list::-webkit-scrollbar {
   width: 1rem;
   height: 0.65rem;
 }
 .year-funfacts .card-wrapping .slider-list::-webkit-scrollbar-thumb {
-  background: rgb(255, 69, 0);
+  background: #ff4500;
   box-shadow: inset 2px 2px 2px hsla(34, 100%, 90%, 0.25), inset -2px -2px 2px rgba(0, 0, 0, 0.25);
 }
 .year-funfacts .card-wrapping .slider-list::-webkit-scrollbar-track {
@@ -525,17 +727,8 @@ body {
   min-height: 100vh;
   margin: 0;
 }
-.milestones:before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  height: 100%;
-  width: 4px;
-  background-color: #fff;
-}
 .milestones .entries {
+  position: relative;
   width: calc(100% - 80px);
   max-width: 800px;
   margin: auto;
@@ -543,7 +736,7 @@ body {
   left: -5px;
 }
 .milestones .entries .entry {
-  width: calc(50% - 80px);
+  width: calc(50% - 8rem);
   float: left;
   padding: 20px;
   clear: both;
@@ -558,23 +751,6 @@ body {
   font-family: "Glegoo", serif;
   font-size: 2rem;
   color: #ff6f00;
-}
-.milestones .entries .entry .title:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 50%;
-  width: 8px;
-  height: 8px;
-  border: 4px solid #e60e0e;
-  border-radius: 50%;
-  z-index: 1000;
-}
-.milestones .entries .entry .title.big:before {
-  width: 24px;
-  height: 24px;
-  transform: translate(8px, -50%);
 }
 .milestones .entries .entry .body {
   color: #f5f5f5;
@@ -592,12 +768,26 @@ body {
 .milestones .entries .entry:nth-child(2n) .title.big:before {
   transform: translate(-50%, -50%);
 }
+.milestones .entries .entry.soon .title {
+  color: #86674f;
+}
+.milestones .entries .entry.soon .body {
+  color: #7a7a7a;
+}
+.milestones .entries::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  height: 260vh;
+  width: 4px;
+  background: linear-gradient(#ff6f00 25%, #86674f);
+  box-shadow: 0 0 10px #ffb300;
+}
 
 .bday-cake {
-  margin-bottom: 1rem;
-  border: 0.1rem solid orange;
-  border-radius: 1rem;
-  box-shadow: 0 0 1rem orange;
+  margin-bottom: -4.6rem;
 }
 .bday-cake .cake-wishes,
 .bday-cake .cake-wishes-signature {
@@ -626,8 +816,6 @@ body {
   height: 100px;
 }
 .bday-cake .cake .candle {
-  background: #ffffff;
-  border-radius: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -635,16 +823,18 @@ body {
   margin-top: -8.3333333333px;
   width: 5px;
   height: 16.6666666667px;
+  background: #ffffff;
+  border-radius: 100%;
 }
 .bday-cake .cake .candle .flame {
-  border-radius: 100%;
-  box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
   position: absolute;
   top: -12px;
   left: 50%;
   margin-left: -3.3333333333px;
   width: 6.6666666667px;
   height: 12.5px;
+  border-radius: 100%;
+  box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
 }
 .bday-cake .cake .candle .flame:nth-child(1) {
   animation: flameFire 2s infinite;
@@ -677,11 +867,11 @@ body {
 }
 .bday-cake .cake .candle:after,
 .bday-cake .cake .candle:before {
-  background: rgba(255, 0, 0, 0.4);
   content: "";
   position: absolute;
   width: 100%;
   height: 2.2222222222px;
+  background: rgba(255, 0, 0, 0.4);
 }
 .bday-cake .cake .candle:after {
   top: 25%;
@@ -692,8 +882,6 @@ body {
   left: 0;
 }
 .bday-cake .cake .cake-frosting {
-  background: #ece7e3;
-  border-radius: 50px;
   position: absolute;
   top: 60%;
   left: 50%;
@@ -701,16 +889,18 @@ body {
   margin-top: -5px;
   width: 55.5555555556px;
   height: 12.5px;
+  background: #ece7e3;
+  border-radius: 50px;
   z-index: 10;
 }
 .bday-cake .cake .cake-frosting:after,
 .bday-cake .cake .cake-frosting:before {
-  background: #ece7e3;
-  border-radius: 100px;
   content: "";
   position: absolute;
   width: 5px;
   height: 10px;
+  background: #ece7e3;
+  border-radius: 100px;
 }
 .bday-cake .cake .cake-frosting:after {
   top: 6.6666666667px;
@@ -721,21 +911,21 @@ body {
   right: 9.0909090909px;
 }
 .bday-cake .cake .cake-biscuit {
-  background: #6d3826;
   position: absolute;
   bottom: 0;
   left: 50%;
   margin-left: -25px;
   width: 50px;
   height: 33.3333333333px;
+  background: #6d3826;
 }
 .bday-cake .cake .cake-biscuit:after,
 .bday-cake .cake .cake-biscuit:before {
-  background: rgba(236, 231, 227, 0.6);
   content: "";
   position: absolute;
   width: 100%;
   height: 5px;
+  background: rgba(236, 231, 227, 0.6);
 }
 .bday-cake .cake .cake-biscuit:after {
   top: 30%;
@@ -746,14 +936,14 @@ body {
   left: 0;
 }
 .bday-cake .cake:after {
-  background: #ebe3e1;
-  border-radius: 100px;
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100px;
   height: 2px;
+  background: #ebe3e1;
+  border-radius: 100px;
 }
 
 .wishes iframe {
@@ -790,7 +980,7 @@ body {
 }
 .footer .footer-line {
   border: 0.05rem solid #ff6f00;
-  box-shadow: 0 0 1rem rgb(255, 179, 0);
+  box-shadow: 0 0 1rem #ffb300;
 }
 .footer .wrapper {
   display: flex;

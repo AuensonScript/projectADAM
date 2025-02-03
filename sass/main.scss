@@ -69,6 +69,79 @@ body {
 	padding: 6em 2em;
 }
 
+// LOADING MOMENT
+
+.page-loader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+	background-image: colors.$loaderBackground;
+	transition: opacity 0.5s ease-out;
+	z-index: 1000;
+	&__balls {
+		display: flex;
+		gap: 2.5rem;
+		margin-bottom: 1.5rem;
+		.ball {
+			width: 5rem;
+			height: 5rem;
+			animation: loaderBounce 0.9s ease-in 2 alternate both;
+		}
+		.ball2 {
+			animation-delay: 0.2s;
+		}
+		.ball3 {
+			animation-delay: 0.4s;
+		}
+		@keyframes loaderBounce {
+			0% {
+				transform: translateY(-45px);
+				opacity: 1;
+			}
+			24% {
+				opacity: 1;
+			}
+			40% {
+				transform: translateY(-24px);
+			}
+			65% {
+				transform: translateY(-12px);
+			}
+			82% {
+				transform: translateY(-6px);
+			}
+			93% {
+				transform: translateY(-4px);
+			}
+			25%,
+			55%,
+			75%,
+			87% {
+				transform: translateY(0px);
+			}
+			100% {
+				transform: translateY(0px);
+				opacity: 1;
+			}
+		}
+	}
+	&__text {
+		font-size: 1.2rem;
+		color: colors.$textColorDark;
+	}
+}
+
+.hidden {
+	opacity: 0;
+	pointer-events: none;
+}
+
 // NAVIGATION
 
 .burger-btn {
@@ -207,55 +280,179 @@ body {
 
 // PERSONAL STATISTICS
 
-.statistics-wrapper {
-	display: flex;
-	justify-content: space-around;
-	.holo-card {
-		height: 450px;
-		width: 300px;
-		border-radius: 10%;
-		background-image: url("../img/card/card_front_desktop.PNG");
-		background-position: center;
-		background-size: cover;
-		.frontside-card {
+.personal-statistics {
+	.statistics-wrapper {
+		display: flex;
+		justify-content: space-around;
+		.holo-card {
 			position: relative;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			align-items: center;
-			.sticker-box {
-				position: absolute;
-				top: 0;
-				right: 0;
-				height: 50%;
-				width: 50%;
-			}
-			.text-box {
-				padding: 10px;
-				color: colors.$textColorDark;
-				text-align: center;
-			}
-		}
-		.reverseside-card {
-			display: none;
-		}
-	}
-	.stats {
-		.birth-stats {
-			.timebox {
+			height: 450px;
+			width: 300px;
+			border-radius: 5%;
+			background-image: url("../img/card/card_front_desktop.PNG");
+			filter: brightness(90%);
+			background-position: center;
+			background-size: cover;
+			box-shadow: -5px -5px 5px -5px colors.$lightAccentColor,
+				5px 5px 5px -5px colors.$darkAccentColor, -7px -7px 10px -5px transparent,
+				7px 7px 10px -5px transparent, 0 0 5px 0px rgba(255, 255, 255, 0),
+				0 55px 35px -20px rgba(0, 0, 0, 0.5);
+			perspective: 100rem;
+			transform-style: preserve-3d;
+			transform-origin: center right;
+			.frontside-card {
+				position: relative;
 				display: flex;
-				justify-content: space-around;
-				text-align: center;
-				.time {
-					padding: 15px;
+				flex-direction: column;
+				justify-content: space-between;
+				height: 100%;
+				.sticker-wrapper {
+					.sticker-box {
+						position: absolute;
+						top: 0.5rem;
+						right: 0.5rem;
+						z-index: -1;
+					}
+				}
+				.text-box {
+					position: absolute;
+					bottom: 10px;
+					width: 100%;
+					padding: 10px;
+					text-align: center;
+					color: colors.$textColorDark;
+					text-shadow: 0 0 1rem #000;
+					h2 {
+						-webkit-text-stroke: 0.5px #000;
+					}
 				}
 			}
+			.backside-card {
+				position: relative;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				display: none;
+				background-color: colors.$backgroundDarkmode;
+				border-radius: 5%;
+				.upper-card-side {
+					.holo-card__card-info-list {
+						list-style: none;
+					}
+				}
+			}
+			.frontside-card::before,
+			.backside-card::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				border-radius: 5%;
+				background-image: linear-gradient(
+					115deg,
+					transparent 0%,
+					rgba(71, 237, 255, 0.6) 30%,
+					rgba(255, 61, 236, 0.6) 70%,
+					transparent 100%
+				);
+				background-size: 400% 400%;
+				animation: holoEffect 4s infinite linear;
+				opacity: 0.3;
+				filter: blur(0.2rem);
+				z-index: 0;
+			}
+			@keyframes holoEffect {
+				0% {
+					background-position: 0% 0%;
+				}
+				50% {
+					background-position: 100% 100%;
+				}
+				100% {
+					background-position: 0% 0%;
+				}
+			}
+			.frontside-card::after,
+			.backside-card::after {
+				content: "";
+				height: 450px;
+				width: 300px;
+				border-radius: 5%;
+				background-image: url("../img/card/sparkles.webp"), url("../img/card/holo.webp");
+				background-size: 100%;
+				background-blend-mode: overlay;
+				filter: brightness(1) contrast(1);
+				overflow: hidden;
+				transition: all 0.33s ease;
+				mix-blend-mode: color-dodge;
+				opacity: 0.8;
+				z-index: 2;
+			}
 		}
-		.stats-wheel-box {
-			display: flex;
-			flex-wrap: wrap;
-			.stats-wheel {
-				width: 49%;
+		.holo-card.flipped {
+			transform: translateX(-100%) rotateY(-180deg);
+		}
+		.holo-card.flipped .frontside-card {
+			display: none;
+		}
+		.holo-card.flipped .backside-card {
+			display: block;
+		}
+		.stats {
+			.birth-stats {
+				padding-bottom: 1.5rem;
+				color: colors.$textColorDark;
+				.timebox {
+					display: flex;
+					justify-content: space-around;
+					text-align: center;
+					.time {
+						padding: 0 1.5rem 1rem;
+						font-family: fonts.$titleText;
+						h2 {
+							font-size: 5rem;
+							color: transparent;
+							-webkit-text-stroke: 0.1rem colors.$textColorDark;
+						}
+					}
+				}
+			}
+			.stats-wheel-box {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-around;
+				gap: 1rem;
+				.stats-wheel {
+					position: relative;
+					padding: 0.5em 0;
+					width: 45%;
+					height: 15rem;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					border-radius: 0.2em;
+					border-bottom: 10px solid colors.$mainAccentColor;
+					box-shadow: 0 0 1.5rem #000;
+					.stats-number {
+						display: grid;
+						place-items: center;
+						font-family: fonts.$titleText;
+						font-size: 5rem;
+						font-weight: 600;
+						color: transparent;
+						-webkit-text-stroke: 1px colors.$textColorDark;
+					}
+					.stats-text {
+						padding: 0.7rem 0;
+						color: #e0e0e0;
+						font-weight: 400;
+						font-size: 1.2rem;
+						text-align: center;
+					}
+				}
 			}
 		}
 	}
@@ -381,6 +578,7 @@ body {
 					margin-bottom: auto;
 					color: colors.$textColorDark;
 					text-shadow: 1px 1px 10px #000, 0 0 5px #000;
+					backdrop-filter: blur(7px);
 				}
 				.card-header p {
 					font-size: 14px;
@@ -505,6 +703,24 @@ body {
 			.card.euro2012-img {
 				background-image: url("../img/cards_sliders/world_events/euro2012_desktop.png");
 			}
+			.card.fiba-img {
+				background-image: url("../img/cards_sliders/sport/fiba_desktop.png");
+			}
+			.card.nba-img {
+				background-image: url("../img/cards_sliders/sport/nba_desktop.png");
+			}
+			.card.plk-img {
+				background-image: url("../img/cards_sliders/sport/plk_desktop.png");
+			}
+			.card.malysz-img {
+				background-image: url("../img/cards_sliders/sport/malysz_desktop.png");
+			}
+			.card.kowalczyk-img {
+				background-image: url("../img/cards_sliders/sport/kowalczyk_desktop.png");
+			}
+			.card.soccer-img {
+				background-image: url("../img/cards_sliders/sport/soccer_desktop.png");
+			}
 			.card.schengen-img {
 				background-image: url("../img/cards_sliders/world_events/schengen_desktop.png");
 			}
@@ -526,11 +742,14 @@ body {
 			.card.best-picture-img {
 				background-image: url("../img/cards_sliders/world_events/best-picture_desktop.png");
 			}
+			.card.machu-img {
+				background-image: url("../img/cards_sliders/world_events/machu_desktop.png");
+			}
 			.card.rowling-img {
 				background-image: url("../img/cards_sliders/world_events/rowling_desktop.png");
 			}
-			.card.twilight-img {
-				background-image: url("../img/cards_sliders/world_events/twilight_desktop.png");
+			.card.wawa-img {
+				background-image: url("../img/cards_sliders/world_events/wawa_desktop.png");
 			}
 		}
 
@@ -556,24 +775,15 @@ body {
 	position: relative;
 	min-height: 100vh;
 	margin: 0;
-	&:before {
-		content: "";
-		position: absolute;
-		left: 50%;
-		bottom: 0;
-		transform: translateX(-50%);
-		height: 100%;
-		width: 4px;
-		background-color: #fff;
-	}
 	.entries {
+		position: relative;
 		width: calc(100% - 80px);
 		max-width: 800px;
 		margin: auto;
 		position: relative;
 		left: -5px;
 		.entry {
-			width: calc(50% - 80px);
+			width: calc(50% - 8rem);
 			float: left;
 			padding: 20px;
 			clear: both;
@@ -587,23 +797,6 @@ body {
 				font-family: fonts.$titleText;
 				font-size: 2rem;
 				color: colors.$mainAccentColor;
-				&:before {
-					content: "";
-					position: absolute;
-					top: 50%;
-					transform: translateY(-50%);
-					left: 50%;
-					width: 8px;
-					height: 8px;
-					border: 4px solid #e60e0e;
-					border-radius: 50%;
-					z-index: 1000;
-				}
-				&.big:before {
-					width: 24px;
-					height: 24px;
-					transform: translate(8px, -50%);
-				}
 			}
 			.body {
 				color: colors.$textColorDark;
@@ -624,16 +817,32 @@ body {
 				}
 			}
 		}
+		.entry.soon {
+			.title {
+				color: colors.$soonColorTitle;
+			}
+			.body {
+				color: colors.$soonColorText;
+			}
+		}
+	}
+	.entries::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 50%;
+		height: 260vh;
+		width: 4px;
+		background: colors.$timeLineColor;
+		box-shadow: 0 0 10px colors.$lightAccentColor;
 	}
 }
 
 // WISHES SECTION
 
 .bday-cake {
-	margin-bottom: 1rem;
-	border: 0.1rem solid orange;
-	border-radius: 1rem;
-	box-shadow: 0 0 1rem orange;
+	margin-bottom: -4.6rem;
 	.cake-wishes,
 	.cake-wishes-signature {
 		text-align: center;
@@ -660,8 +869,6 @@ body {
 		width: 100px;
 		height: 100px;
 		.candle {
-			background: #ffffff;
-			border-radius: 100%;
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -669,15 +876,17 @@ body {
 			margin-top: -8.333333333333334px;
 			width: 5px;
 			height: 16.666666666666668px;
+			background: #ffffff;
+			border-radius: 100%;
 			.flame {
-				border-radius: 100%;
-				box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
 				position: absolute;
 				top: -12px;
 				left: 50%;
 				margin-left: -3.3333333333333335px;
 				width: 6.666666666666667px;
 				height: 12.5px;
+				border-radius: 100%;
+				box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
 			}
 			.flame:nth-child(1) {
 				animation: flameFire 2s infinite;
@@ -711,11 +920,11 @@ body {
 		}
 		.candle:after,
 		.candle:before {
-			background: rgba(255, 0, 0, 0.4);
 			content: "";
 			position: absolute;
 			width: 100%;
 			height: 2.2222222222222223px;
+			background: rgba(255, 0, 0, 0.4);
 		}
 		.candle:after {
 			top: 25%;
@@ -726,8 +935,6 @@ body {
 			left: 0;
 		}
 		.cake-frosting {
-			background: #ece7e3;
-			border-radius: 50px;
 			position: absolute;
 			top: 60%;
 			left: 50%;
@@ -735,16 +942,18 @@ body {
 			margin-top: -5px;
 			width: 55.55555555555556px;
 			height: 12.5px;
+			background: #ece7e3;
+			border-radius: 50px;
 			z-index: 10;
 		}
 		.cake-frosting:after,
 		.cake-frosting:before {
-			background: #ece7e3;
-			border-radius: 100px;
 			content: "";
 			position: absolute;
 			width: 5px;
 			height: 10px;
+			background: #ece7e3;
+			border-radius: 100px;
 		}
 		.cake-frosting:after {
 			top: 6.666666666666667px;
@@ -755,21 +964,21 @@ body {
 			right: 9.090909090909092px;
 		}
 		.cake-biscuit {
-			background: #6d3826;
 			position: absolute;
 			bottom: 0;
 			left: 50%;
 			margin-left: -25px;
 			width: 50px;
 			height: 33.333333333333336px;
+			background: #6d3826;
 		}
 		.cake-biscuit:after,
 		.cake-biscuit:before {
-			background: rgba(236, 231, 227, 0.6);
 			content: "";
 			position: absolute;
 			width: 100%;
 			height: 5px;
+			background: rgba(236, 231, 227, 0.6);
 		}
 		.cake-biscuit:after {
 			top: 30%;
@@ -781,14 +990,14 @@ body {
 		}
 	}
 	.cake:after {
-		background: #ebe3e1;
-		border-radius: 100px;
 		content: "";
 		position: absolute;
 		bottom: 0;
 		left: 0;
 		width: 100px;
 		height: 2px;
+		background: #ebe3e1;
+		border-radius: 100px;
 	}
 }
 

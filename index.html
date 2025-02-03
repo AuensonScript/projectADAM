@@ -14,6 +14,17 @@
 		<link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
 	</head>
 	<body>
+		<!-- LOADING MOMENT -->
+		<div class="page-loader" id="pageLoader">
+			<div class="page-loader__balls">
+				<img src="./img/favicon.png" alt="Piłka do koszykówki" class="ball ball1">
+				<img src="./img/favicon.png" alt="Piłka do koszykówki" class="ball ball2">
+				<img src="./img/favicon.png" alt="Piłka do koszykówki" class="ball ball3">
+			</div>
+			<p class="page-loader__text">Ładowanie strony...</p>
+		</div>
+
+		<!-- MAIN WEBSITE -->
 		<button class="burger-btn">
 			<div class="burger-btn__box">
 				<div class="burger-btn__bars"></div>
@@ -48,17 +59,19 @@
 					<div class="statistics-wrapper">
 						<div class="holo-card" onclick="void(0)">
 							<div class="frontside-card">
-								<div class="sticker-box">
-								<img
-									src="./img/sticker.png" class="card-sticker"
-									alt="Naklejka koszulki koszykarskiej z numerem 18 i nazwiskiem Clements" />
+								<div class="sticker-wrapper">
+									<div class="sticker-box">
+									<img
+										src="./img/sticker-small.jpg.png" class="card-sticker"
+										alt="Naklejka koszulki koszykarskiej z numerem 18 i nazwiskiem Clements" />
+									</div>
 								</div>
 								<div class="text-box">
 									<h2>adam clements</h2>
 									<p>zawodnik roku</p>
 								</div>
 							</div>
-							<div class="reverseside-card">
+							<div class="backside-card">
 								<div class="upper-card-side">
 									<ul class="holo-card__card-info-list">
 										<li class="holo-card__card-info-list-item">Imię: </span>Adam</li>
@@ -67,9 +80,6 @@
 										<li class="holo-card__card-info-list-item"><span>Waga: </span>ciężar sukcesu</li>
 										<li class="holo-card__card-info-list-item"><span>Data debiutu: </span>03.02.2007</li>
 									</ul>
-									<img
-											src="./img/card/card-revers_desktop.PNG"
-											alt="Chłopak w stroju koszykarskim rzucający piłką." />
 								</div>
 								<div class="lower-card-side">
 									<div class="player-info two">
@@ -83,15 +93,23 @@
 						</div>
 						<div class="stats">
 							<div class="birth-stats">
-								<h2>jesteś z nami już:</h2>
+								<h2 class="birth-stats__title">jesteś z nami już:</h2>
 								<div class="timebox">
 									<div class="time">
 										<h2 id="years">00</h2>
 										<p>lat</p>
 									</div>
 									<div class="time">
+										<h2 id="months">00</h2>
+										<p>miesięcy</p>
+									</div>
+									<div class="time">
 										<h2 id="days">00</h2>
 										<p>dni</p>
+									</div>
+									<div class="time">
+										<h2 id="hours">00</h2>
+										<p>godzin</p>
 									</div>
 									<div class="time">
 										<h2 id="minutes">00</h2>
@@ -103,21 +121,21 @@
 									</div>
 								</div>
 							</div>
-							<div class="stats-wheel-box">
+							<div class="stats-wheel-box" id="statsWheelBox">
 								<div class="stats-wheel">
-									<div class="stats-number">100+</div>
+									<div class="stats-number" data-val="100">000</div>
 									<p class="stats-text">skoków do gwiazd</p>
 								</div>
 								<div class="stats-wheel">
-									<div class="stats-number">1000+</div>
+									<div class="stats-number" data-val="1000">000</div>
 									<p class="stats-text">rzutów do kosza</p>
 								</div>
 								<div class="stats-wheel">
-									<div class="stats-number">250+</div>
+									<div class="stats-number" data-val="250">000</div>
 									<p class="stats-text">celnych wsadów</p>
 								</div>
 								<div class="stats-wheel">
-									<div class="stats-number">500+</div>
+									<div class="stats-number" data-val="500">000</div>
 									<p class="stats-text">zbitych piątek</p>
 								</div>
 							</div>
@@ -352,6 +370,13 @@
 							<p class="cards-slider__header-card-text">wydarzenia sportowe</p>
 						</div>
 						<div class="slider-list">
+							<article class="card euro2012-img">
+								<div class="card-header">
+								  <p>przyznanie Polsce i Ukrainie</p>
+								  <h2>euro 2012</h2>
+								</div>
+							</article>
+
 							<article class="card fiba-img">
 								<div class="card-header">
 								  <p>fiba eurobasket wygrywa</p>
@@ -373,52 +398,24 @@
 								</div>
 							  </article>
 
-							  <article class="card spider-img">
+							  <article class="card malysz-img">
 								<div class="card-header">
-								  <p>maj 2007</p>
-								  <h2>spider-man 3</h2>
+								  <p>adam małysz wygrywa</p>
+								  <h2>puchar świata w skokach</h2>
 								</div>
 							  </article>
 
-							  <article class="card spider-img">
+							  <article class="card kowalczyk-img">
 								<div class="card-header">
-								  <p>maj 2007</p>
-								  <h2>spider-man 3</h2>
+								  <p>justyna kowalczyk wygrywa</p>
+								  <h2>puchar świata w biegach</h2>
 								</div>
 							  </article>
 
-							  <article class="card spider-img">
+							  <article class="card soccer-img">
 								<div class="card-header">
-								  <p>maj 2007</p>
-								  <h2>spider-man 3</h2>
-								</div>
-							  </article>
-
-							  <article class="card spider-img">
-								<div class="card-header">
-								  <p>maj 2007</p>
-								  <h2>spider-man 3</h2>
-								</div>
-							  </article>
-
-							  <article class="card spider-img">
-								<div class="card-header">
-								  <p>maj 2007</p>
-								  <h2>spider-man 3</h2>
-								</div>
-							  </article>
-
-							  <article class="card spider-img">
-								<div class="card-header">
-								  <p>maj 2007</p>
-								  <h2>spider-man 3</h2>
-								</div>
-							  </article>
-
-							  <article class="card spider-img">
-								<div class="card-header">
-								  <p>maj 2007</p>
-								  <h2>spider-man 3</h2>
+								  <p>A. C. Milan wygrywa</p>
+								  <h2>ligę mistrzów uefa</h2>
 								</div>
 							  </article>
 						</div>
@@ -429,13 +426,6 @@
 							<p class="cards-slider__header-card-text">na świecie</p>
 						</div>
 						<div class="slider-list">
-							<article class="card euro2012-img">
-								<div class="card-header">
-								  <p>przyznanie Polsce i Ukrainie</p>
-								  <h2>euro 2012</h2>
-								</div>
-							</article>
-
 							<article class="card schengen-img">
 								<div class="card-header">
 								  <p>Polska w strefie</p>
@@ -485,6 +475,13 @@
 								</div>
 							  </article>
 
+							  <article class="card machu-img">
+								<div class="card-header">
+								  <p>jednym z siedmiu cudów świata</p>
+								  <h2>machu picchu</h2>
+								</div>
+							  </article>
+
 							  <article class="card rowling-img">
 								<div class="card-header">
 								  <p>j.k.rowling</p>
@@ -492,10 +489,10 @@
 								</div>
 							  </article>
 
-							  <article class="card twilight-img">
+							  <article class="card wawa-img">
 								<div class="card-header">
-								  <p>wydano książkę</p>
-								  <h2>zmierch: zaćmienie</h2>
+								  <p>otwarto w warszawie</p>
+								  <h2>złote tarasy</h2>
 								</div>
 							  </article>
 						</div>
@@ -561,18 +558,47 @@
 							</div>
 						</div>
 						<div class="entry">
-							<div class="title big">2016</div>
+							<div class="title big">✈️ Pierwsza podróż za granicę</div>
 							<div class="body">
 								<p>
-									Impedit dolorem commodi explicabo fugit aut alias voluptatem. Magnam earum rerum quae
-									dicta quibusdam aliquam ut.
+									Pierwsza podróż do innego kraju - nowe doświadczenia, inne kultury i niezapomniane wspomnienia!
 								</p>
 							</div>
 						</div>
 						<div class="entry">
-							<div class="title">2017</div>
+							<div class="title">💍 Pierwszy poważny związek</div>
 							<div class="body">
-								<p>Qui facere eos aut suscipit doloremque quos...</p>
+								<p>Młodzieńczy związek, pełen emocji, przygód i pierwszych doświadczeń w relacjach. Choć nie zawsze trwały na zawsze, miał ogromny wpływ na dojrzewanie i odkrywanie siebie.</p>
+							</div>
+						</div>
+						<div class="entry soon">
+							<div class="title">🚗 Prawo jazdy</div>
+							<div class="body">
+								<p>Nowa umiejętność i poczucie niezależności. Pierwsza podróż samochodowa bez rodziców to prawdziwa wolność!</p>
+							</div>
+						</div>
+						<div class="entry soon">
+							<div class="title">🎓 Zdanie matury</div>
+							<div class="body">
+								<p>Wielki test przygotowania i determinacji. Zakończenie szkoły średniej to przełomowy moment na drodze do przyszłości.</p>
+							</div>
+						</div>
+						<div class="entry soon">
+							<div class="title">🏫 Dostanie się na studia</div>
+							<div class="body">
+								<p>Pierwszy krok w kierunku realizacji marzeń zawodowych i osobistych. Nowe miejsce, nowe wyzwania i nowe możliwości.</p>
+							</div>
+						</div>
+						<div class="entry soon">
+							<div class="title">💼 Zadbanie o emeryturę</div>
+							<div class="body">
+								<p>Pierwszy krok w kierunku bezpieczeństwa finansowego na przyszłość. Planowanie oszczędności i inwestycji na późniejsze lata życia.</p>
+							</div>
+						</div>
+						<div class="entry soon">
+							<div class="title">👨‍⚖️ Zbudowanie stabilnej kariery</div>
+							<div class="body">
+								<p>Osiągnięcie ważnych etapów zawodowych. Czas na rozwój i budowanie pozycji w wymarzonej branży.</p>
 							</div>
 						</div>
 					</div>

@@ -3,7 +3,16 @@ $backgroundLightmode: #f4f4f4;
 $textColorDark: #f5f5f5;
 $textColorLight: #333;
 $mainAccentColor: #ff6f00;
-$darkAccentColor: rgb(255, 69, 0);
-$lightAccentColor: rgb(255, 179, 0);
-$backgroundShadow: linear-gradient(180deg, rgba(65, 65, 65, 0.5), rgba(0,0,0,.5));
-$navBackgroundColor: linear-gradient(310deg, rgb(65, 65, 65), rgba(255, 68, 0, 0.87), rgb(65, 65, 65));
+$darkAccentColor: #ff4500;
+$lightAccentColor: #ffb300;
+$soonColorTitle: #86674f;
+$soonColorText: #7a7a7a;
+$timeLineColor: linear-gradient(#ff6f00 25%, #86674f);
+$backgroundShadow: linear-gradient(180deg, rgba(65, 65, 65, 0.5), rgba(0, 0, 0, 0.5));
+$navBackgroundColor: linear-gradient(
+	310deg,
+	rgb(65, 65, 65),
+	rgba(255, 68, 0, 0.87),
+	rgb(65, 65, 65)
+);
+$loaderBackground: linear-gradient(315deg, #000000, #414141);
