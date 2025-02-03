@@ -275,6 +275,7 @@ body {
   perspective: 100rem;
   transform-style: preserve-3d;
   transform-origin: center right;
+  cursor: pointer;
 }
 .personal-statistics .statistics-wrapper .holo-card .frontside-card {
   position: relative;
@@ -409,6 +410,9 @@ body {
 }
 .personal-statistics .statistics-wrapper .holo-card.flipped .under-text {
   transform: rotateY(180deg);
+}
+.personal-statistics .statistics-wrapper .stats {
+  cursor: default;
 }
 .personal-statistics .statistics-wrapper .stats .birth-stats {
   padding-bottom: 1.5rem;

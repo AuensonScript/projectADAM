@@ -445,6 +445,7 @@ body {
 			transform: rotateY(180deg);
 		}
 		.stats {
+			cursor: default;
 			.birth-stats {
 				padding-bottom: 1.5rem;
 				color: colors.$textColorDark;
