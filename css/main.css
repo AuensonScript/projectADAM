@@ -303,16 +303,51 @@ body {
 }
 .personal-statistics .statistics-wrapper .holo-card .backside-card {
   position: relative;
+  height: 100%;
+  padding: 1.5rem;
+  display: none;
+  font-family: "Swanky and Moo Moo", serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.3rem;
+  color: #f5f5f5;
+  background-color: rgb(65, 65, 65);
+  background-image: url("../img/card/back-card_desktop.png");
+  border-radius: 5%;
+  transform: rotateY(180deg);
+}
+.personal-statistics .statistics-wrapper .holo-card .backside-card .upper-card-side {
+  position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
-  display: none;
-  background-color: rgb(65, 65, 65);
-  border-radius: 5%;
+  display: flex;
+  padding: 1.5rem;
 }
 .personal-statistics .statistics-wrapper .holo-card .backside-card .upper-card-side .holo-card__card-info-list {
+  width: 80%;
   list-style: none;
+}
+.personal-statistics .statistics-wrapper .holo-card .backside-card .upper-card-side .holo-card__card-info-list .holo-card__card-info-list-item {
+  padding: 0.5rem 0;
+}
+.personal-statistics .statistics-wrapper .holo-card .backside-card .upper-card-side img {
+  width: 20%;
+  height: 20%;
+}
+.personal-statistics .statistics-wrapper .holo-card .backside-card .lower-card-side {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.personal-statistics .statistics-wrapper .holo-card .backside-card .lower-card-side .player-info {
+  padding: 1rem;
+}
+.personal-statistics .statistics-wrapper .holo-card .backside-card .lower-card-side .player-info p {
+  padding: 0.5rem 0;
+}
+.personal-statistics .statistics-wrapper .holo-card .backside-card span {
+  font-size: 1rem;
+  font-family: "Amiko", serif;
+  letter-spacing: 0;
 }
 .personal-statistics .statistics-wrapper .holo-card .frontside-card::before,
 .personal-statistics .statistics-wrapper .holo-card .backside-card::before {
@@ -357,14 +392,23 @@ body {
   opacity: 0.8;
   z-index: 2;
 }
+.personal-statistics .statistics-wrapper .holo-card .under-text {
+  padding-top: 1rem;
+  color: white;
+  font-size: 0.5rem;
+  text-align: center;
+}
 .personal-statistics .statistics-wrapper .holo-card.flipped {
-  transform: translateX(-100%) rotateY(-180deg);
+  transform: translateX(-100%) rotateY(180deg);
 }
 .personal-statistics .statistics-wrapper .holo-card.flipped .frontside-card {
   display: none;
 }
 .personal-statistics .statistics-wrapper .holo-card.flipped .backside-card {
   display: block;
+}
+.personal-statistics .statistics-wrapper .holo-card.flipped .under-text {
+  transform: rotateY(180deg);
 }
 .personal-statistics .statistics-wrapper .stats .birth-stats {
   padding-bottom: 1.5rem;

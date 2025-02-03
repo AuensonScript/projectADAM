@@ -329,17 +329,50 @@ body {
 			}
 			.backside-card {
 				position: relative;
-				top: 0;
-				left: 0;
 				height: 100%;
-				width: 100%;
+				padding: 1.5rem;
 				display: none;
+				font-family: fonts.$quoteText;
+				font-size: 1.8rem;
+				letter-spacing: .3rem;
+				color: colors.$textColorDark;
 				background-color: colors.$backgroundDarkmode;
+				background-image: url("../img/card/back-card_desktop.png");
 				border-radius: 5%;
+				transform: rotateY(180deg);
 				.upper-card-side {
+					position: absolute;
+					top: 0;
+					left: 0;
+					display: flex;
+					padding: 1.5rem;
 					.holo-card__card-info-list {
+						width: 80%;
 						list-style: none;
+						.holo-card__card-info-list-item {
+							padding: .5rem 0;
+						}
 					}
+					img {
+						width: 20%;
+						height: 20%;
+					}
+				}
+				.lower-card-side {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					.player-info {
+						padding: 1rem;
+						p {
+							padding: .5rem 0;
+						}
+					}
+				}
+				span {
+					font-size: 1rem;
+					font-family: fonts.$mainText;
+					letter-spacing: 0;
 				}
 			}
 			.frontside-card::before,
@@ -391,15 +424,24 @@ body {
 				opacity: 0.8;
 				z-index: 2;
 			}
+			.under-text {
+				padding-top: 1rem;
+				color: white;
+				font-size: 0.5rem;
+				text-align: center;
+			}
 		}
 		.holo-card.flipped {
-			transform: translateX(-100%) rotateY(-180deg);
+			transform: translateX(-100%) rotateY(180deg);
 		}
 		.holo-card.flipped .frontside-card {
 			display: none;
 		}
 		.holo-card.flipped .backside-card {
 			display: block;
+		}
+		.holo-card.flipped .under-text {
+			transform: rotateY(180deg);
 		}
 		.stats {
 			.birth-stats {
