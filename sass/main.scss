@@ -1,7 +1,12 @@
 @use "./animations" as animations;
+@use "./breakpoints" as breakpoints;
 @use "./colors" as colors;
 @use "./fonts" as fonts;
-@use "./mixins" as mixins;
+@use "./holocard" as holocard;
+@use "./images" as image;
+@use "./mixins" as mixin;
+@use "./reset" as reset;
+@use "./typography" as typography;
 
 *,
 *::before,
