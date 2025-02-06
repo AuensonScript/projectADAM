@@ -8,6 +8,8 @@
 @use "./reset" as reset;
 @use "./typography" as typography;
 
+// docelowo mają zniknąć resety i rzeczy powstarzające się, żeby poczyścić kod i był bardziej przejrzysty
+
 *,
 *::before,
 *::after {
