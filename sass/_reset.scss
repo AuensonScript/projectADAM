@@ -1,0 +1,20 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: fonts.$mainText;
+	text-transform: uppercase;
+	// font-size and background-color to delete in the future
+	font-size: 1.6rem;
+	background-color: colors.$backgroundDarkmode;
+}

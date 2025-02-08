@@ -5,30 +5,8 @@
 @use "./holocard" as holocard;
 @use "./images" as image;
 @use "./mixins" as mixin;
-@use "./reset" as reset;
 @use "./typography" as typography;
-
-// docelowo mają zniknąć resety i rzeczy powstarzające się, żeby poczyścić kod i był bardziej przejrzysty
-
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-
-html {
-	font-size: 62.5%;
-	scroll-behavior: smooth;
-}
-
-body {
-	font-family: fonts.$mainText;
-	font-size: 1.6rem;
-	text-transform: uppercase;
-	background-color: colors.$backgroundDarkmode;
-}
+@use "./reset" as reset;
 
 // COMPONENTS
 
